@@ -27,7 +27,7 @@ object Lyrics {
             .header("User-Agent", "MusicPlayerApp/1.0")
             .build()
 
-        val body = client.newCall(request).execute().use { it.body.string() }
+        val body = client.newCall(request).execute().use { it.body?.string().orEmpty() }
         val results = JSONArray(body)
 
         for (i in 0 until results.length()) {
